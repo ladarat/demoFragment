@@ -1,0 +1,20 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.day04.course.fragmentapplication.AFragment">
+
+    <TextView
+        android:id="@+id/aText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="200sp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/changeTextInB"
+        android:layout_width="wrap_content"
+        android:text="change B"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>
