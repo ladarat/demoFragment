@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="A" />
+            android:text="@string/textFragmentA" />
 
 
         <Button
@@ -25,14 +25,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="B" />
+            android:text="@string/textFragmentB" />
 
         <Button
             android:id="@+id/cButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="C" />
+            android:text="@string/textFragmentC" />
     </LinearLayout>
 
     <FrameLayout

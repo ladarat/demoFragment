@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements AFragment.AListener {
+public class MainActivity extends AppCompatActivity implements AFragment.AListener, View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,36 +23,29 @@ public class MainActivity extends AppCompatActivity implements AFragment.AListen
                 .add(R.id.fragmentContainer, AFragment.newInstance("A", MainActivity.this))
                 .commit();
 
-        aButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewFragment(AFragment.newInstance("A", MainActivity.this));
-
-            }
-        });
-
-        bButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewFragment(new BFragment());
-            }
-        });
-
-        cButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                viewFragment(new CFragment());
-            }
-        });
-
+        aButton.setOnClickListener(this);
+        bButton.setOnClickListener(this);
+        cButton.setOnClickListener(this);
 
     }
 
-    private void viewFragment(Fragment fragment){
+    private void viewFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
                 .commit();
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if (R.id.aButton == view.getId()) {
+            viewFragment(AFragment.newInstance("A", MainActivity.this));
+        } else if (R.id.bButton == view.getId()) {
+            viewFragment(new BFragment());
+        } else {
+            viewFragment(new CFragment());
+        }
     }
 
     @Override
