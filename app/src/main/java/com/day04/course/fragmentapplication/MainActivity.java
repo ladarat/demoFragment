@@ -18,15 +18,19 @@ public class MainActivity extends AppCompatActivity implements AFragment.AListen
         Button bButton = (Button) findViewById(R.id.bButton);
         Button cButton = (Button) findViewById(R.id.cButton);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.fragmentContainer, AFragment.newInstance("A", MainActivity.this))
-                .commit();
+        initialFragment();
 
         aButton.setOnClickListener(this);
         bButton.setOnClickListener(this);
         cButton.setOnClickListener(this);
 
+    }
+
+    private void initialFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmentContainer, AFragment.newInstance("A", MainActivity.this))
+                .commit();
     }
 
     private void viewFragment(Fragment fragment) {
