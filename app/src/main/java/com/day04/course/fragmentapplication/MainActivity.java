@@ -18,7 +18,9 @@ public class MainActivity extends AppCompatActivity implements AFragment.AListen
         Button bButton = (Button) findViewById(R.id.bButton);
         Button cButton = (Button) findViewById(R.id.cButton);
 
-        initialFragment();
+        if(savedInstanceState == null) {
+            initialFragment();
+        }
 
         aButton.setOnClickListener(this);
         bButton.setOnClickListener(this);
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements AFragment.AListen
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
                 .commit();
     }
 
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements AFragment.AListen
         if (R.id.aButton == view.getId()) {
             viewFragment(AFragment.newInstance("A", MainActivity.this));
         } else if (R.id.bButton == view.getId()) {
-            viewFragment(new BFragment());
+            viewFragment(new BFragment().newInstance("B"));
         } else {
             viewFragment(new CFragment());
         }
@@ -54,6 +57,6 @@ public class MainActivity extends AppCompatActivity implements AFragment.AListen
 
     @Override
     public void showAndUpdateB(String value) {
-        viewFragment(new BFragment());
+        viewFragment(new BFragment().newInstance(value));
     }
 }

@@ -14,8 +14,6 @@ public class AFragment extends Fragment {
     private static final String DATA = "data";
     private AListener listener;
 
-    public AFragment() {
-    }
 
     public static final AFragment newInstance(String label, AListener listener){
         AFragment fragment = new AFragment();
